@@ -3,7 +3,8 @@
 import sqlite3
 import os
 
-db = '/mnt/hdd/db/dbBtc'
+
+db = 'db/dbBtc' #'/mnt/hdd/db/dbBtc'
 def crearBDBtc():
     dbBtc = sqlite3.connect(db)
     curBtc = dbBtc.cursor()

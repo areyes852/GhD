@@ -9,12 +9,12 @@ from coinbase.wallet.client import Client
 crearBDBtc()
 [apiKey,apiSecret]=obterCredenciales()
 client = Client(apiKey,apiSecret)
-currency_pair='ETH-EUR'
+currencyPair='ETH-EUR'
 
 while 1:
-    prezoSpot=client.get_spot_price(currency_pair=currency_pair)
-    prezoCompra=client.get_buy_price(currency_pair= currency_pair)
-    prezoVenta=client.get_sell_price(currency_pair=currency_pair)
+    prezoSpot=client.get_spot_price(currency_pair=currencyPair)
+    prezoCompra=client.get_buy_price(currency_pair= currencyPair)
+    prezoVenta=client.get_sell_price(currency_pair=currencyPair)
 
     tempo=time.time()
 
