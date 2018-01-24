@@ -36,7 +36,7 @@ def actualizarPrecios(prezoCompra, prezoVenta, prezoSpot, tempo):
         print 'Non se pode acceder á base de datos dbBtc en: ' + db
     dbBtc = sqlite3.connect(db)
     curBtc = dbBtc.cursor()
-    curBtc.execute('INSERT OR IGNORE INTO Prezos (prezoCompra, prezoVenta, prezoSpot, tempo) VALUES(?,?,?,?)',(prezoCompra, prezoVenta, prezoSpot, tempo))
+    curBtc.execute('INSERT OR IGNORE INTO Prezos (prezoCompra, prezoVenta, prezoSpot, tempo) VALUES(?,?,?,?)',(prezoCompra, prezoVenta, prezoSpot, tempo,))
     dbBtc.commit()
     curBtc.close()
 
