@@ -9,7 +9,7 @@ from coinbase.wallet.client import Client
 crearBDBtc()
 [apiKey,apiSecret]=obterCredenciales()
 client = Client(apiKey,apiSecret)
-currency_pair='BTC-EUR'
+currency_pair='ETH-EUR'
 
 while 1:
     prezoSpot=client.get_spot_price(currency_pair=currency_pair)
@@ -25,11 +25,11 @@ while 1:
     print 'Prezo Spot: ' + str(obterPrezoSpot(tempo))
 
 
-print prezoSpot['amount']
-print prezoCompra['amount']
-print prezoVenta['amount']
-
-
-print 'Prezo compra: ' + str(obterPrezoCompra(tempo))
-print 'Prezo venta: ' + str(obterPrezoVenta(tempo))
-print 'Prezo Spot: ' + str(obterPrezoSpot(tempo))
+# print prezoSpot['amount']
+# print prezoCompra['amount']
+# print prezoVenta['amount']
+#
+#
+# print 'Prezo compra: ' + str(obterPrezoCompra(tempo))
+# print 'Prezo venta: ' + str(obterPrezoVenta(tempo))
+# print 'Prezo Spot: ' + str(obterPrezoSpot(tempo))
