@@ -22,7 +22,7 @@ def crearBDBtc():
 
 def obterCredenciales():
     if not os.path.isfile(db):
-        print 'Non se pode acceder á base de datos dbBtc en: ' + db
+        print ('Non se pode acceder á base de datos dbBtc en: ' + db)
     dbBtc = sqlite3.connect(db)
     curBtc = dbBtc.cursor()
     curBtc.execute('SELECT valor FROM ContaCoinbase WHERE clave =?',('api_key',))
@@ -34,7 +34,7 @@ def obterCredenciales():
 
 def actualizarPrecios(prezoCompra, prezoVenta, prezoSpot, tempo):
     if not os.path.isfile(db):
-        print 'Non se pode acceder á base de datos dbBtc en: ' + db
+        print ('Non se pode acceder á base de datos dbBtc en: ' + db)
     dbBtc = sqlite3.connect(db)
     curBtc = dbBtc.cursor()
     curBtc.execute('INSERT OR IGNORE INTO Prezos (prezoCompra, prezoVenta, prezoSpot, tempo) VALUES(?,?,?,?)',(prezoCompra, prezoVenta, prezoSpot, tempo,))
@@ -43,7 +43,7 @@ def actualizarPrecios(prezoCompra, prezoVenta, prezoSpot, tempo):
 
 def obterPrezoCompra(tempo):
     if not os.path.isfile(db):
-        print 'Non se pode acceder á base de datos dbBtc en: ' + db
+        print ('Non se pode acceder á base de datos dbBtc en: ' + db)
     dbBtc = sqlite3.connect(db)
     curBtc = dbBtc.cursor()
     curBtc.execute('SELECT prezoCompra FROM Prezos WHERE tempo = ?',(tempo,))
@@ -53,7 +53,7 @@ def obterPrezoCompra(tempo):
 
 def obterPrezoVenta(tempo):
     if not os.path.isfile(db):
-        print 'Non se pode acceder á base de datos dbBtc en: ' + db
+        print( 'Non se pode acceder á base de datos dbBtc en: ' + db)
     dbBtc = sqlite3.connect(db)
     curBtc = dbBtc.cursor()
     curBtc.execute('SELECT prezoVenta FROM Prezos WHERE tempo = ?',(tempo,))
@@ -63,7 +63,7 @@ def obterPrezoVenta(tempo):
 
 def obterPrezoSpot(tempo):
     if not os.path.isfile(db):
-        print 'Non se pode acceder á base de datos dbBtc en: ' + db
+        print ('Non se pode acceder á base de datos dbBtc en: ' + db)
     dbBtc = sqlite3.connect(db)
     curBtc = dbBtc.cursor()
     curBtc.execute('SELECT prezoSpot FROM Prezos WHERE tempo = ?',(tempo,))
@@ -73,7 +73,7 @@ def obterPrezoSpot(tempo):
 
 def obterPrezos(tempo):
     if not os.path.isfile(db):
-        print 'Non se pode acceder á base de datos dbBtc en: ' + db
+        print( 'Non se pode acceder á base de datos dbBtc en: ' + db)
     dbBtc = sqlite3.connect(db)
     curBtc = dbBtc.cursor()
     curBtc.execute('SELECT * FROM Prezos WHERE tempo = ?',(tempo,))
