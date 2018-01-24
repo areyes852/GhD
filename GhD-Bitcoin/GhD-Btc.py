@@ -19,7 +19,7 @@ while 1:
     tempo=time.time()
 
     actualizarPrecios(prezoCompra['amount'], prezoVenta['amount'], prezoSpot['amount'],tempo)
-    time.sleep(1)
+    time.sleep(10)
     print 'Prezo compra: ' + str(obterPrezoCompra(tempo))
     print 'Prezo venta: ' + str(obterPrezoVenta(tempo))
     print 'Prezo Spot: ' + str(obterPrezoSpot(tempo))
