@@ -4,32 +4,31 @@ import sys
 import os
 import time
 import sqlite3
+import requests
 from BDBtc import *
 from coinbase.wallet.client import Client
+
+
 crearBDBtc()
-[apiKey,apiSecret]=obterCredenciales()
-client = Client(apiKey,apiSecret)
-currencyPair='ETH-EUR'
+#
+# [apiKey,apiSecret]=['Vioq9ZeOIyvt98Zw','68yCkxPl5EAHXhIMGDDCdHXIfwXrXWrO']
+# API_VERSION = '2016-02-18'
+# client = Client(apiKey,apiSecret,API_VERSION)
+# currencyPair='ETH-EUR'
+
 
 while 1:
-    prezoSpot=client.get_spot_price(currency=currencyPair)
-    prezoCompra=client.get_buy_price(currency_pair=currencyPair)
-    prezoVenta=client.get_sell_price(currency_pair=currencyPair)
+    rBuy = requests.get("https://api.coinbase.com/v2/prices/ETH-EUR/buy").json()
+    rSell = requests.get("https://api.coinbase.com/v2/prices/ETH-EUR/sell").json()
+    rSpot = requests.get("https://api.coinbase.com/v2/prices/ETH-EUR/spot").json()
+    prezoCompra = rBuy['data']['amount']
+    prezoVenta = rSell['data']['amount']
+    prezoSpot = rSpot['data']['amount']
 
     tempo=time.time()
 
-    actualizarPrecios(prezoCompra['amount'], prezoVenta['amount'], prezoSpot['amount'],tempo)
-    time.sleep(10)
-    print ('Prezo compra: ' + str(obterPrezoCompra(tempo)))
-    # print 'Prezo venta: ' + str(obterPrezoVenta(tempo))
-    # print 'Prezo Spot: ' + str(obterPrezoSpot(tempo))
-
-
-# print prezoSpot['amount']
-# print prezoCompra['amount']
-# print prezoVenta['amount']
-#
-#
-# print 'Prezo compra: ' + str(obterPrezoCompra(tempo))
-# print 'Prezo venta: ' + str(obterPrezoVenta(tempo))
-# print 'Prezo Spot: ' + str(obterPrezoSpot(tempo))
+    actualizarPrecios(prezoCompra, prezoVenta, prezoSpot,tempo)
+    print 'Prezo compra: ' + str(obterPrezoCompra(tempo))
+    print 'Prezo venta: ' + str(obterPrezoVenta(tempo))
+    print 'Prezo Spot: ' + str(obterPrezoSpot(tempo))
+    time.sleep(5)
